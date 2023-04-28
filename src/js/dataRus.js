@@ -87,9 +87,9 @@ export default [
   ],
   [
     {
-      value: 'Tab',
+      value: '&nbsp;&nbsp;&nbsp;&nbsp;',
       title: 'Tab',
-      altValue: 'Tab',
+      altValue: '&nbsp;&nbsp;&nbsp;&nbsp;',
       className: 'dark',
     },
     {
@@ -171,17 +171,17 @@ export default [
       className: 'light',
     },
     {
-      value: 'DEL',
+      value: 'Delete',
       title: 'DEL',
-      altValue: 'DEL',
+      altValue: 'Delete',
       className: 'dark',
     },
   ],
   [
     {
-      value: 'Caps Lock',
-      title: '<Caps Lock',
-      altValue: 'Caps Lock',
+      value: 'CapsLock',
+      title: 'Caps Lock',
+      altValue: 'CapsLock',
       className: 'dark',
     },
     {
@@ -251,9 +251,9 @@ export default [
       className: 'light',
     },
     {
-      value: 'ENTER',
+      value: '<br>',
       title: 'ENTER',
-      altValue: 'ENTER',
+      altValue: '<br>',
       className: 'dark',
     },
   ],
@@ -345,9 +345,9 @@ export default [
   ],
   [
     {
-      value: 'Ctrl',
+      value: 'Control',
       title: 'Ctrl',
-      altValue: 'Ctrl',
+      altValue: 'Control',
       className: 'dark',
     },
     {
@@ -363,9 +363,9 @@ export default [
       className: 'dark',
     },
     {
-      value: 'Space',
+      value: '&nbsp;',
       title: '',
-      altValue: 'Space',
+      altValue: '&nbsp;',
       className: 'light',
     },
     {
@@ -375,9 +375,9 @@ export default [
       className: 'dark',
     },
     {
-      value: 'Ctrl',
+      value: 'Control',
       title: 'Ctrl',
-      altValue: 'Ctrl',
+      altValue: 'Control',
       className: 'dark',
     },
     {

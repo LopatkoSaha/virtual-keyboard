@@ -59,3 +59,24 @@ body {
 .row-5 div:nth-child(4) {
 width: 35%;
 }
+.active {
+    background-color: #3556e7;
+}
+.cursor {
+    display: inline-block;
+    margin: 2px;
+    width: 2px;
+    height: 14px;
+    background-color: #222;
+    transform: translateY(5px);
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
