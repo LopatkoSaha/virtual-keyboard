@@ -8,7 +8,7 @@ html {
 body {
     display: flex;
     justify-content: center;
-    background-color: #d0d0d0;
+
 }
 .wrapper {
     width: 80%;
@@ -20,11 +20,26 @@ body {
         margin: 10px auto 10px auto;
     }
     .output {
-        width: 100%;
+        width: 98%;
         min-height: 200px;
-        margin: auto;
         background-color: #fff;
+        margin-left: 0;
         margin-bottom: 10px;
+        padding: 5px;
+        border: 1px solid black;
+        align-items: flex-start;
+        span {
+            display: inline-block;
+        }
+        .cursor {
+            display: inline-block;
+            margin: 2px;
+            width: 2px;
+            height: 14px;
+            background-color: #222;
+            transform: translateY(3px);
+            animation: blink 0.8s infinite;
+        }
     }
     .keyboard {
         display: flex;
@@ -33,50 +48,92 @@ body {
         align-items: center;
         width: 100%;
         min-height: 200px;
-        border: 2px solid black;
-        padding: 10px;
-        background-color: #fff;
+        padding: 0px;
+        user-select: none;
         .row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
             div {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
                 min-width: 20px;
-                min-height: 20px;
+                height: 20px;
                 border: 1px solid black;
-                padding: 5px;
+                padding: 10px;
                 white-space: nowrap;
                 border-radius: 5px;
                 text-align: center;
+                margin: 3px;
+                font-weight: 700;
             }
             div:hover {
                 cursor: pointer;
             }
         }
+        .row-4 div:last-child {
+            padding: 10px 5px;
+        }
+        .row-1 div:last-child {
+            min-width: 10%;
+        }
+        .row-2 div:nth-child(1) {
+            min-width: 40px;
+        }
     }
 }
+
+.row-3 div:nth-child(1) {
+    width: 10%;
+}
+
+.row-3 div:last-child {
+    width: 10%;
+}
+
+.row-4 div:nth-child(1) {
+    width: 10%;
+}
+
+.row-4 div:last-child {
+    padding: 5px;
+}
+
 .row-5 div:nth-child(4) {
-width: 35%;
+    width: 33%;
 }
-.active {
-    background-color: #3556e7;
+
+.row-5 div:nth-child(1) {
+    width: 7%;
 }
-.cursor {
-    display: inline-block;
-    margin: 2px;
-    width: 2px;
-    height: 14px;
-    background-color: #222;
-    transform: translateY(5px);
-    animation: blink 0.8s infinite;
+
+.row-5 div:nth-child(6) {
+    width: 7%;
+}
+
+.dark.active,
+.light.active {
+    background-color: #8ea0f1;
 }
 
 @keyframes blink {
+
     0%, 100% {
         opacity: 1;
     }
     50% {
         opacity: 0;
     }
+
+}
+
+.dark {
+    background-color: #6b6868;
+}
+
+.light {
+    background-color: #dbd8d8;
 }

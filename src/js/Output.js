@@ -9,8 +9,16 @@ export default class Output {
 
   render() {
     this.output.innerHTML = `
-      <span>${this.beforeCursor.map((item, idx) => `<span data-idx="${idx}" data-position="before">${item}</span>`).join('')}</span><span class="cursor"></span><span>${this.afterCursor.map((item, idx) => `<span data-idx="${idx}" data-position="after">${item}</span>`).join('')}</span>
+      ${this.beforeCursor.map((item, idx) => this.renderItem(item, idx, true)).join('')}<span class="cursor"></span>${this.afterCursor.map((item, idx) => this.renderItem(item, idx, false)).join('')}
     `;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  renderItem(item, idx, isBefore) {
+    if (item === '<br>') {
+      return item;
+    }
+    return `<span data-idx="${idx}" data-position="${isBefore ? 'before' : 'after'}">${item}</span>`;
   }
 
   clickHandler(target) {
