@@ -20,9 +20,9 @@ export default class Keyboard {
 
   render() {
     this.keyboard.innerHTML = this.data.map((row, idx) => `
-      <div class="row row-${idx + 1}">${row.map((key) => `
-        <div value="${key.value}" altValue="${key.altValue}" class="${key.className}">${key.title}</div>
-      `).join('')}</div>
+      <div class="row row-${idx + 1}">${row.map(({
+  value, altValue, title, className,
+}) => `<div value="${value}" altValue="${altValue}" class="${className}">${title}</div>`).join('')}</div>
     `).join('');
   }
 
@@ -34,6 +34,7 @@ export default class Keyboard {
     const altValue = target.closest('[altValue]').getAttribute('altValue');
     if (this.futctionalKeys.includes(value)) {
       this.functionalKeysHandler(target);
+      this.layoutHelper(target);
       return;
     }
     if (value === 'Backspace') {
@@ -59,8 +60,11 @@ export default class Keyboard {
   }
 
   keyboardHandler(e) {
-    e.preventDefault();
     const virtualKey = document.querySelector(`.${e.code}`);
+    if (!virtualKey) {
+      return;
+    }
+    e.preventDefault();
     const value = virtualKey.getAttribute('value');
     if (this.futctionalKeys.includes(value)) {
       if (e.type === 'keyup' && value === 'CapsLock') {
@@ -69,7 +73,7 @@ export default class Keyboard {
       if (e.type === 'keydown') {
         this.layoutHelper(virtualKey);
       }
-      this.functionalKeysHandler(virtualKey);
+      this.functionalKeysHandler(virtualKey, e.type);
     } else {
       virtualKey.classList.toggle('active');
       if (e.type === 'keydown') {
@@ -89,7 +93,7 @@ export default class Keyboard {
     }
   }
 
-  functionalKeysHandler(target) {
+  functionalKeysHandler(target, type) {
     const value = target.getAttribute('value');
     target.classList.toggle('active');
     switch (value) {
@@ -97,9 +101,19 @@ export default class Keyboard {
         this.isShift = !this.isShift;
         break;
       case 'Control':
+        if (type === 'keyup') {
+          target.classList.remove('active');
+          this.isControl = false;
+          break;
+        }
         this.isControl = !this.isControl;
         break;
       case 'Alt':
+        if (type === 'keyup') {
+          target.classList.remove('active');
+          this.isAlt = false;
+          break;
+        }
         this.isAlt = !this.isAlt;
         break;
       case 'CapsLock':
@@ -111,17 +125,25 @@ export default class Keyboard {
   }
 
   setLayout() {
-    this.data = dataEng;
-    this.layout = 'eng';
+    const layout = localStorage.getItem('layout');
+    if (!layout || layout === 'eng') {
+      this.data = dataEng;
+      this.layout = 'eng';
+    } else {
+      this.data = dataRus;
+      this.layout = 'rus';
+    }
   }
 
   toggleLayout() {
     if (this.layout === 'eng') {
       this.data = dataRus;
       this.layout = 'rus';
+      localStorage.setItem('layout', 'rus');
     } else {
       this.data = dataEng;
       this.layout = 'eng';
+      localStorage.setItem('layout', 'eng');
     }
     this.render();
   }

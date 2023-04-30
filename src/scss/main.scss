@@ -55,7 +55,9 @@ body {
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            div {
+
+            .dark,
+            .light {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-around;
@@ -69,6 +71,27 @@ body {
                 text-align: center;
                 margin: 3px;
                 font-weight: 700;
+                box-shadow: 3px 3px 3px 0 #555;
+
+                &:active {
+                    transition: all 0.1s ease 0s;
+                    box-shadow: 0 0px 0 0 #555;
+                    transform: translateY(3px);
+                    background-color: #8ea0f1;
+                }
+            }
+            .dark {
+                background-color: #6b6868;
+                &.active {
+                    background-color: #8ea0f1;
+                }
+            }
+            
+            .light {
+                background-color: #dbd8d8;
+                &.active {
+                    background-color: #8ea0f1;
+                }
             }
             div:hover {
                 cursor: pointer;
@@ -114,10 +137,7 @@ body {
     width: 7%;
 }
 
-.dark.active,
-.light.active {
-    background-color: #8ea0f1;
-}
+
 
 @keyframes blink {
 
@@ -128,12 +148,4 @@ body {
         opacity: 0;
     }
 
-}
-
-.dark {
-    background-color: #6b6868;
-}
-
-.light {
-    background-color: #dbd8d8;
 }

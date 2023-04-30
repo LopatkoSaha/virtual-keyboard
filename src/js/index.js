@@ -1,13 +1,16 @@
 import '../scss/main.scss';
 import Keyboard from './Keyboard';
-import dataEng from './dataEng';
 
 document.body.insertAdjacentHTML('beforeend', `
   <div class="wrapper">
-      <div class="legend"></div>
-      <div class="output"></div>
-      <div class="keyboard"></div>
+    <div class="legend">
+      <p>Клавиатура разработана для OS Windows</p>
+      <p>Переключение раскладки сочетанием  Ctrl + Alt</p>
+    </div>
+    <div class="output"></div>
+    <div class="keyboard"></div>
   </div>
 `);
 
-const keyboard = new Keyboard(dataEng);
+// eslint-disable-next-line no-new
+new Keyboard();
