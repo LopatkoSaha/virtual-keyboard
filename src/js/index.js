@@ -6,6 +6,7 @@ document.body.insertAdjacentHTML('beforeend', `
     <div class="legend">
       <p>Клавиатура разработана для OS Windows</p>
       <p>Переключение раскладки сочетанием  Ctrl + Alt</p>
+      <p>Для навигации по полю ввода можно кликать мышью</p>
     </div>
     <div class="output"></div>
     <div class="keyboard"></div>
