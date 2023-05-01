@@ -10,7 +10,8 @@
     "start": "webpack-dev-server --open --mode=development",
     "build": "webpack build --mode=production",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "lint": "eslint ./ --fix"
   },
   "keywords": [],
   "author": "",
@@ -36,6 +37,7 @@
     "webpack-dev-server": "^4.13.2"
   },
   "dependencies": {
-    "eslint-config-airbnb": "^19.0.4"
+    "eslint-config-airbnb": "^19.0.4",
+    "normalize.css": "^8.0.1"
   }
 }
